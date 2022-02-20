@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Router from "next/router";
+import Router,{useRouter} from "next/router";
 import dynamic from 'next/dynamic'
 import{useState,useEffect} from "react"
 import Search from '../components/Search'
@@ -24,10 +24,7 @@ export async function getServerSideProps({query}){
   }else if(query.hasOwnProperty('ipAddress')){
     queryString = `ipAddress=${query.ipAddress}`
   }else{
-    const ipResponse = await fetch(`https://api.ipify.org?format=json`)
-    const ipInfo = await ipResponse.json()
-    queryString = `ipAddress=${ipInfo.ip}`
-    console.log(queryString)
+    queryString = `ipAddress=`
   }
 
   const response = await fetch(`https://geo.ipify.org/api/v2/country?apiKey=${process.env.IPIFY_API_KEY}&${queryString}`)
@@ -49,6 +46,11 @@ export async function getServerSideProps({query}){
 }
 
 export default function Home({locationData,mapInfo}) {
+  const router = useRouter()
+
+  useEffect(()=>{
+    fetch(`https://api.ipify.org?format=json`).then(response => response.json()).then(data => router.push(`?ipAddress=${data.ip}`))
+  },[])
 
   const [loading, setLoading] = useState(false)
   useEffect(() => {
