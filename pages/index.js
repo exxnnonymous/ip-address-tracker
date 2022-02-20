@@ -27,6 +27,7 @@ export async function getServerSideProps({query}){
     const ipResponse = await fetch(`https://api.ipify.org?format=json`)
     const ipInfo = await ipResponse.json()
     queryString = `ipAddress=${ipInfo.ip}`
+    console.log(queryString)
   }
 
   const response = await fetch(`https://geo.ipify.org/api/v2/country?apiKey=${process.env.IPIFY_API_KEY}&${queryString}`)
