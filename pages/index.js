@@ -16,13 +16,17 @@ const DynamicComponentWithNoSSR = dynamic(
 
 export async function getServerSideProps({query}){
 
+  
+
   let queryString;
   if (query.hasOwnProperty('domain')){
     queryString = `domain=${query.domain}`
   }else if(query.hasOwnProperty('ipAddress')){
     queryString = `ipAddress=${query.ipAddress}`
   }else{
-    queryString = `ipAddress=`
+    const ipResponse = await fetch(`https://api.ipify.org?format=json`)
+    const ipInfo = await ipResponse.json()
+    queryString = `ipAddress=${ipInfo.ip}`
   }
 
   const response = await fetch(`https://geo.ipify.org/api/v2/country?apiKey=${process.env.IPIFY_API_KEY}&${queryString}`)

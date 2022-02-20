@@ -23,7 +23,7 @@ function Search() {
     if (queryTop !== null){
       router.push(`?${queryTop}=${value}`)
     }else{
-      router.push(`?ipAddress=${value}`)
+      fetch(`https://api.ipify.org?format=json`).then(response => response.json()).then(data => router.push(`?ipAddress=${data.ip}`))
     }
   }
 
