@@ -1,0 +1,57 @@
+.search_box{
+  display: flex;
+  max-width: 500px;
+  /* border-radius: 15px; */
+  /* overflow: hidden; */
+  margin-inline:auto;
+  margin-bottom: 30px;
+  
+}
+.search_box > input{
+ flex-grow: 1;
+  padding: 15px 20px;
+  font-family: var(--primary-font);
+font-size: 16px;
+font-weight: 400;
+border-top-left-radius: 15px;
+border-bottom-left-radius: 15px;
+border: none;
+position: relative;
+z-index: 5;
+}
+.search_box > input::placeholder{
+font-family: var(--primary-font);
+font-size: 16px;
+font-weight: 400;
+}
+.search_box .search_icon{
+--transition-dura: 200ms;
+position: relative;
+z-index: 10;
+width: 50px;
+background-color: black;
+border: none;
+outline: none;
+display: flex;
+justify-content: center;
+align-items: center;
+cursor: pointer;
+border: 3px solid transparent;
+border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+  transition: background-color var(--transition-dura) ease-in-out, border var(--transition-dura) ease-in-out;
+}
+.search_box .search_icon svg path{
+  stroke:white;
+  transition: stroke var(--transition-dura) ease-in-out;
+}
+.search_box .search_icon:hover,
+.search_box .search_icon:focus{
+  background-color: white;
+  border: 3px solid black;
+}
+.search_box .search_icon:hover svg path,
+.search_box .search_icon:focus svg path{
+  stroke:black;
+}
+

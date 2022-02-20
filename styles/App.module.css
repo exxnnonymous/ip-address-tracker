@@ -1,0 +1,27 @@
+.container{
+    width: 100%;
+    min-height: 100vh;
+}
+
+.ip_tracker_main{
+    height: 100%;
+    /* display: flex;
+    justify-content: center; */
+}
+
+.info_wrapper{
+    padding: 40px 20px;
+    margin-inline: auto;
+    max-width: 1200px;
+    font-family: var(--primary-font);
+    width:100%;
+    position:relative;
+    z-index: 50;
+}
+.info_wrapper h1{
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 500;
+    margin-bottom: 25px;
+}

@@ -1,0 +1,59 @@
+
+.ip_address_info_container{
+  --box-shadow-color:rgba(0,0,0,0.15);
+  width: 100%;
+  text-align: center;
+  background-color: white;
+  border-radius: 15px;
+  padding: 20px 10px;
+  display: grid;
+  grid-gap: 1rem;
+  box-shadow: 2px 2px 50px 0px var(--box-shadow-color);
+-webkit-box-shadow: 2px 2px 50px 0px var(--box-shadow-color);
+-moz-box-shadow: 2px 2px 50px 0px var(--box-shadow-color);
+}
+
+
+.item{
+margin-bottom: 5px;
+
+}
+
+.item_header{
+text-transform: uppercase;
+font-size: 12px;
+margin-bottom: 7px;
+font-weight: 700;
+color: var(--primary-Dark-Gray);
+letter-spacing: 1.5px;
+}
+.item_info{
+  opacity: .9;
+font-weight: 500;
+font-size: var(--primary-font-size);
+}
+
+
+@media (min-width:1024px) {
+  .ip_address_info_container{
+      grid-template-columns: repeat(4, 1fr);
+      text-align: left;
+      padding: 30px;
+  }
+  .ip_address_info_container > *{
+      position: relative;
+      padding-inline: 10px 20px;
+   }
+  .ip_address_info_container > *:not(:last-child)::after{
+     content: '';
+     height: 85%;
+     width: 1px;
+     position: absolute;
+     top: 20%;
+     right: 20px;
+     opacity: .3;
+     background-color:var(--primary-Dark-Gray) ;
+  }
+ 
+  
+}
